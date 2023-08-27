@@ -1,4 +1,4 @@
-package com.journaldev.jsf.util;
+package com.issareem.mytodoapp.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.journaldev.jsf.util;
+package com.issareem.mytodoapp.util;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
