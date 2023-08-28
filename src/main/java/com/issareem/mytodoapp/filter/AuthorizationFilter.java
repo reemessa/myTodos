@@ -13,6 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * 
+ * @author Reem Issa
+ * @class_name AuthorizationFilter.java
+ * @class_description
+ * @create_date Aug 28, 2023
+ */
 @WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
 public class AuthorizationFilter implements Filter {
 
@@ -25,8 +33,8 @@ public class AuthorizationFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		try {
 
 			HttpServletRequest reqt = (HttpServletRequest) request;
@@ -34,10 +42,8 @@ public class AuthorizationFilter implements Filter {
 			HttpSession ses = reqt.getSession(false);
 
 			String reqURI = reqt.getRequestURI();
-			if (reqURI.indexOf("/login.xhtml") >= 0
-					|| (ses != null && ses.getAttribute("username") != null)
-					|| reqURI.indexOf("/public/") >= 0
-					|| reqURI.contains("javax.faces.resource"))
+			if (reqURI.indexOf("/login.xhtml") >= 0 || (ses != null && ses.getAttribute("username") != null)
+					|| reqURI.indexOf("/public/") >= 0 || reqURI.contains("javax.faces.resource"))
 				chain.doFilter(request, response);
 			else
 				resp.sendRedirect(reqt.getContextPath() + "/faces/login.xhtml");
