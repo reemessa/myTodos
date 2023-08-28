@@ -1,7 +1,5 @@
 package com.issareem.mytodoapp.controller;
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -25,24 +23,21 @@ import com.issareem.mytodoapp.util.UserUtil;
  */
 @ManagedBean
 @SessionScoped
-public class LoginController implements Serializable {
+public class LoginController {
 
 	@EJB
 	private UserBean userBean;
-
-	private static final long serialVersionUID = 1L;
 
 	private UserUtil loggedInUser;
 
 	@PostConstruct
 	public void init() {
 		loggedInUser = new UserUtil();
-		userBean = new UserBean();
 	}
 
 	public String validateUsernamePassword() {
 
-		boolean valid = true ; //userBean.validate(loggedInUser.getUserName(), loggedInUser.getPassword());
+		boolean valid = userBean.validate(loggedInUser.getUserName(), loggedInUser.getPassword());
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", loggedInUser.getUserName());

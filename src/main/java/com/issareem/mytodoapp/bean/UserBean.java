@@ -1,8 +1,8 @@
 package com.issareem.mytodoapp.bean;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import com.issareem.mytodoapp.dao.UserDAO;
 import com.issareem.mytodoapp.entity.User;
@@ -19,6 +19,7 @@ import com.issareem.mytodoapp.entity.User;
 @LocalBean
 public class UserBean {
 
+	@EJB
 	private UserDAO userDao;
 
 	public void save(User user) {
@@ -26,8 +27,6 @@ public class UserBean {
 	}
 
 	public Boolean validate(String user, String password) {
-
-		userDao = new UserDAO();
 		return userDao.validateUser(user, password);
 
 	}
