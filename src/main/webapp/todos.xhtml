@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/main-template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h3>#{msg.todosTitle}</h3>
+			<h:form>
+				<p:dataTable value="#{todosController.todoList}" var="todo"
+					editable="true">
+
+					<p:ajax event="rowEdit" listener="#{todosController.onRowEdit}" />
+					<p:ajax event="rowEditCancel"
+						listener="#{todosController.onRowCancel}" />
+
+					<p:column headerText="Name">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{todo.name}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{todo.name}" style="width:100%"
+									label="Name" symbol="$"></p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Description">
+						<h:outputText value="#{todo.description}" />
+					</p:column>
+					<p:column headerText="Priority">
+						<h:outputText value="#{todo.priority}" />
+					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{todo.status}" />
+					</p:column>
+					<p:column headerText="Creation Date">
+						<h:outputText value="#{todo.creationDate}">
+							<f:convertDateTime pattern="dd-MM-yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Deadline">
+						<h:outputText value="#{todo.deadline}">
+							<f:convertDateTime pattern="dd-MM-yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="User">
+						<h:outputText value="#{todo.user.fullName}" />
+					</p:column>
+					<p:column style="width:6rem">
+						<p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit"
+							saveTitle="Save Row" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

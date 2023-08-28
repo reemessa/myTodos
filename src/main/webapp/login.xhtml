@@ -9,18 +9,18 @@
 	<h:form>
 		<h3>#{msg.projectName}</h3>
 		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{loginBean.user}"></h:inputText>
+		<h:inputText id="username" value="#{loginController.loggedInUser.userName}"></h:inputText>
 		<h:message for="username"></h:message>
 		<br />
 		<br />
 
 		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{loginBean.password}"></h:inputSecret>
+		<h:inputSecret id="password" value="#{loginController.loggedInUser.password}"></h:inputSecret>
 		<h:message for="password"></h:message>
 		<br />
 		<br />
 
-		<h:commandButton action="#{loginBean.validateUsernamePassword}"
+		<h:commandButton action="#{loginController.validateUsernamePassword}"
 			value="Login"></h:commandButton>
 	</h:form>
 </h:body>
