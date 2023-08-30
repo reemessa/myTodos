@@ -3,6 +3,7 @@ package com.issareem.mytodoapp.dao;
 import java.util.List;
 
 import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,6 +19,7 @@ import com.issareem.mytodoapp.entity.User;
  * @class_description
  * @create_date Aug 27, 2023
  */
+@Stateless
 @LocalBean
 public class TodoDAO {
 

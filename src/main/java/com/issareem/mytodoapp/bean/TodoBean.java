@@ -2,8 +2,9 @@ package com.issareem.mytodoapp.bean;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
-import javax.inject.Inject;
+import javax.ejb.Stateless;
 
 import com.issareem.mytodoapp.dao.TodoDAO;
 import com.issareem.mytodoapp.entity.Todo;
@@ -17,10 +18,11 @@ import com.issareem.mytodoapp.entity.User;
  * @class_description
  * @create_date Aug 27, 2023
  */
+@Stateless
 @LocalBean
 public class TodoBean {
 
-	@Inject
+	@EJB
 	private TodoDAO todoDao;
 
 	public void save(Todo todo) {
